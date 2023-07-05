@@ -6,32 +6,26 @@ TEST(TestSuiteBase, AlwaysPass)
 	EXPECT_EQ(1, 1);
 }
 
-TEST(TestBaseballGame, ThrowExceptionWhenInputLengthIsUnmatched)
+class BaseballTexture : public testing::Test
 {
+public:
 	BaseBall game;
-	EXPECT_THROW(game.guess(string("12")), length_error);
-}
+	void assertIllegalArgument(string guessNumber)
+	{
+		try
+		{
+			game.guess(string("12s"));
+			FAIL();
+		}
+		catch (exception e) {}	// PASS
+	}
+};
 
-TEST(TestBaseballGame, ThrowExceptionWhenInvalidChar)
+
+TEST_F(BaseballTexture, ThrowExceptionWhenInvalidCase)
 {
-	BaseBall game;
-
-	try
-	{
-		game.guess(string("12s"));
-		FAIL();
-	}
-	catch (exception e) {}
-	try
-	{
-		game.guess(string("1s2"));
-		FAIL();
-	}
-	catch (exception e) {}
-	try
-	{
-		game.guess(string("s12"));
-		FAIL();
-	}
-	catch (exception e) {}
+	assertIllegalArgument("12");
+	assertIllegalArgument("12s");
+	assertIllegalArgument("1s2");
+	assertIllegalArgument("s12");
 }
