@@ -14,7 +14,7 @@ public:
 	{
 		try
 		{
-			game.guess(string("12s"));
+			game.guess(guessNumber);
 			FAIL();
 		}
 		catch (exception e) {}	// PASS
