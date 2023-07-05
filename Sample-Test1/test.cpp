@@ -28,4 +28,5 @@ TEST_F(BaseballTexture, ThrowExceptionWhenInvalidCase)
 	assertIllegalArgument("12s");
 	assertIllegalArgument("1s2");
 	assertIllegalArgument("s12");
+	assertIllegalArgument("121");
 }
