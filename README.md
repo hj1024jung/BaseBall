@@ -1,3 +1,3 @@
 ## Content
 ---
-Prime Factor TDD KATA.
+BaseBall TDD KATA.
