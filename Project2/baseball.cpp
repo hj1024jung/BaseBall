@@ -51,20 +51,17 @@ public:
 			return { true, 3, 0 };
 		}
 
-		if (guessNumber == "129")
+		GuessResult result{ false, 0, 0 };
+
+		for (int i = 0; i < guessNumber.length(); i++)
 		{
-			return {false, 2, 0};
-		}
-		if (guessNumber == "923")
-		{
-			return { false, 2, 0 };
-		}
-		if (guessNumber == "193")
-		{
-			return { false, 2, 0 };
+			if (guessNumber[i] == question[i])
+			{
+				result.strikes++;
+			}
 		}
 
-		return { false, 0, 0 };
+		return result;
 	}
 
 private:
