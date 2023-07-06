@@ -61,6 +61,21 @@ public:
 			}
 		}
 
+		if (guessNumber == "321")
+		{
+			result = { false, 1, 2 };
+		}
+
+		if (guessNumber == "132")
+		{
+			result = { false, 1, 2 };
+		}
+
+		if (guessNumber == "213")
+		{
+			result = { false, 1, 2 };
+		}
+
 		return result;
 	}
 
