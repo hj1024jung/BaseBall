@@ -42,14 +42,21 @@ public:
 		}
 	}
 
+	bool findNumber(const string& question, char findChar)
+	{
+		for (char ch : question)
+		{
+			if (ch == findChar)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 	GuessResult guess(const string& guessNumber)
 	{
 		assertIllegalArgument(guessNumber);
-
-		if (guessNumber == question)
-		{
-			return { true, 3, 0 };
-		}
 
 		GuessResult result{ false, 0, 0 };
 
@@ -58,22 +65,18 @@ public:
 			if (guessNumber[i] == question[i])
 			{
 				result.strikes++;
+				continue;
+			}
+
+			if (findNumber(question, guessNumber[i]))
+			{
+				result.balls++;				
 			}
 		}
 
-		if (guessNumber == "321")
+		if (3 == result.strikes)
 		{
-			result = { false, 1, 2 };
-		}
-
-		if (guessNumber == "132")
-		{
-			result = { false, 1, 2 };
-		}
-
-		if (guessNumber == "213")
-		{
-			result = { false, 1, 2 };
+			result.solved = true;
 		}
 
 		return result;
