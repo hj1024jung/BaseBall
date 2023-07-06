@@ -38,3 +38,22 @@ TEST_F(BaseballTexture, ReturnSolvedResultIfMatchedNumber)
 	EXPECT_EQ(3, result.strikes);
 	EXPECT_EQ(0, result.balls);
 }
+
+TEST_F(BaseballTexture, Return2Strikes0Ball)
+{
+	GuessResult result = game.guess("129");
+
+	EXPECT_EQ(false, result.solved);
+	EXPECT_EQ(2, result.strikes);
+	EXPECT_EQ(0, result.balls);
+
+	result = game.guess("923");
+	EXPECT_EQ(false, result.solved);
+	EXPECT_EQ(2, result.strikes);
+	EXPECT_EQ(0, result.balls);
+
+	result = game.guess("193");
+	EXPECT_EQ(false, result.solved);
+	EXPECT_EQ(2, result.strikes);
+	EXPECT_EQ(0, result.balls);
+}

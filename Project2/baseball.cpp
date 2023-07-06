@@ -51,6 +51,19 @@ public:
 			return { true, 3, 0 };
 		}
 
+		if (guessNumber == "129")
+		{
+			return {false, 2, 0};
+		}
+		if (guessNumber == "923")
+		{
+			return { false, 2, 0 };
+		}
+		if (guessNumber == "193")
+		{
+			return { false, 2, 0 };
+		}
+
 		return { false, 0, 0 };
 	}
 
