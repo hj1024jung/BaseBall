@@ -9,7 +9,7 @@ TEST(TestSuiteBase, AlwaysPass)
 class BaseballTexture : public testing::Test
 {
 public:
-	BaseBall game;
+	BaseBall game{"123"};
 	void assertIllegalArgument(string guessNumber)
 	{
 		try
@@ -21,7 +21,6 @@ public:
 	}
 };
 
-
 TEST_F(BaseballTexture, ThrowExceptionWhenInvalidCase)
 {
 	assertIllegalArgument("12");
@@ -29,4 +28,13 @@ TEST_F(BaseballTexture, ThrowExceptionWhenInvalidCase)
 	assertIllegalArgument("1s2");
 	assertIllegalArgument("s12");
 	assertIllegalArgument("121");
+}
+
+TEST_F(BaseballTexture, ReturnSolvedResultIfMatchedNumber)
+{
+	GuessResult result = game.guess("123");
+
+	EXPECT_TRUE(result.solved);
+	EXPECT_EQ(3, result.strikes);
+	EXPECT_EQ(0, result.balls);
 }
